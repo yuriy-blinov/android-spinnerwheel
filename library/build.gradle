@@ -12,7 +12,7 @@ repositories {
     mavenCentral()
 }
 
-apply plugin: 'android'
+apply plugin: 'android-library'
 
 dependencies {
     compile files('libs/nineoldandroids-2.2.0.jar')
