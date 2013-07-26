@@ -41,6 +41,10 @@ public class CategoryWheelAdapter extends AbstractWheelTextAdapter {
 
     @Override
     public CharSequence getItemText(int index) {
+        int count = calculateMatchesCount();
+        if (count == 0)
+            return _filter;
+
         index = getFilteredIndex(index);
 
         if (index >= 0 && index < items.length) {
@@ -51,7 +55,10 @@ public class CategoryWheelAdapter extends AbstractWheelTextAdapter {
 
     @Override
     public int getItemsCount() {
-        return calculateMatchesCount();
+        int count = calculateMatchesCount();
+        if (count > 0)
+            return count;
+        return 1;
     }
 
     public void setFilter(String filter)

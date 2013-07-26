@@ -134,7 +134,7 @@ public class WheelVerticalView extends AbstractWheelView {
             int c2 = Math.round( c2f ) << 24;
             int c3 = Math.round( c3f ) << 24;
 
-            int[] colors =      {0, c2, c1, c1, 0xff000000, 0xff000000, c1, c1, c2, 0};
+            int[] colors =      {c1, c1, c1, c1, 0xff000000, 0xff000000, c1, c1, c1, c1};
             float[] positions = {0, p3, p3, p1,     p1,         p2,     p2, p4, p4, 1};
             shader = new LinearGradient(0, 0, 0, h, colors, positions, Shader.TileMode.CLAMP);
         }
