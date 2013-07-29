@@ -101,4 +101,13 @@ public class CategoryWheelAdapter extends AbstractWheelTextAdapter {
 
         return --i;
     }
+
+    public int getRealCategoryIndex(int index)
+    {
+        int count = calculateMatchesCount();
+        if (count == 0)
+            return -1;
+
+        return getFilteredIndex(index);
+    }
 }
