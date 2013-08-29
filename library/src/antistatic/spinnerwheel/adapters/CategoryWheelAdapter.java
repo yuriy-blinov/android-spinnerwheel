@@ -24,19 +24,50 @@
 package antistatic.spinnerwheel.adapters;
 
 import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class CategoryWheelAdapter extends AbstractWheelTextAdapter {
 
     private String items[];
+    private int categoryIconIds[];
     private boolean _matches[];
     private String _filter;
+    private int imageViewId;
+    private int defaultIconId;
 
-    public CategoryWheelAdapter(Context context, String items[]) {
+    public CategoryWheelAdapter(Context context, String items[], int icons[]) {
         super(context);
 
         this.items = items;
+        this.categoryIconIds = icons;
         _matches = new boolean[items.length];
         setAllMatchesToTrue();
+    }
+
+    public void setDefaultIconId(int id)
+    {
+        defaultIconId = id;
+    }
+
+    public void setImageViewId(int id)
+    {
+        imageViewId = id;
+    }
+
+    @Override
+    public View getItem(int index, View cachedView, ViewGroup parent) {
+        View view = super.getItem(index, cachedView, parent);
+        ImageView img = (ImageView) view.findViewById(imageViewId);
+
+        int count = calculateMatchesCount();
+        if (count == 0)
+            img.setImageResource(defaultIconId);
+        else
+            img.setImageResource(categoryIconIds[index]);
+
+        return view;
     }
 
     @Override
